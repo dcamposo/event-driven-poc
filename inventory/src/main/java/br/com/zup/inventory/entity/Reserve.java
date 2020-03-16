@@ -1,37 +1,37 @@
 package br.com.zup.inventory.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity(name = "reserve")
 public class Reserve {
 
     @Id
-    private Integer id;
+    private String id;
 
     private String customerId;
-
-    @ManyToOne
-    private Inventory inventory;
+    private String orderId;
+    
+    private String inventoryId;
 
     private BigDecimal amount;
 
     public Reserve(){}
 
-    public Reserve(Integer id, String customerId, BigDecimal amount) {
+    public Reserve(String id, String customerId, String orderId, String inventoryId, BigDecimal amount) {
         this.id = id;
         this.customerId = customerId;
+        this.orderId = orderId;
+        this.inventoryId = inventoryId;
         this.amount = amount;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -50,4 +50,21 @@ public class Reserve {
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getInventoryId() {
+        return inventoryId;
+    }
+
+    public void setInventoryId(String inventory) {
+        this.inventoryId = inventory;
+    }
+
 }
